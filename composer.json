@@ -1,0 +1,33 @@
+{
+	"name" : "syncgw/mail-bundle",
+	"license": "LGPL-3.0-or-later",
+	"homepage" : "https://github.com/syncgw/file-bundle",
+	"authors" : [{
+			"name" : "Florian Daeumling",
+			"homepage" : "https://github.com/toteph42"
+		}
+	],
+	"funding" : [{
+			"type" : "other",
+			"url" : "https://www.paypal.com/donate/?hosted_button_id=DS6VK49NAFHEQ"
+		}
+	],
+	"require" : {
+		"php" : ">=8.1",
+		"PHPMailer/PHPMailer" : ">=6.8.0",
+		"syncgw/core-bundle" : "*",
+		"syncgw/gui-bundle" : "*",
+		"syncgw/mysql-bundle" : "*",
+		"syncgw/roundcube-bundle" : "*"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"syncgw\\interface\\mail\\" : "src/"
+		}
+	},
+	"support" : {
+		"issues" : "https://github.com/syncgw/syncgw/issues",
+		"source" : "https://github.com/syncgw/mail-bundle",
+		"docs" : "https://github.com/syncgw/mail-bundle"
+	}
+}

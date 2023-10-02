@@ -487,48 +487,39 @@ class Handler implements DBextHandler {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'Mail data base handler');
 
-		$class = '\\syncgw\\interface\\mail\\Admin';
-		$class = $class::getInstance();
-		$class->getInfo($xml, $status);
+		$xml->addVar('Opt', 'Status');
+		if ($this->_hd)
+			$xml->addVar('Stat', 'Enabled');
+		else
+			$xml->addVar('Stat', 'Disabled');
 
-		if ($status) {
+		$xml->addVar('Opt', '<a href="https://github.com/PHPMailer/PHPMailer" target="_blank">PHPMailer</a> '.
+					'framework for PHP');
+		$xml->addVar('Stat', 'v'.PHPMailer::VERSION);
 
-			$xml->addVar('Opt', 'Status');
-			if ($this->_hd)
-				$xml->addVar('Stat', 'Enabled');
-			else
-				$xml->addVar('Stat', 'Disabled');
-		} else {
-
-			$xml->addVar('Opt', '<a href="https://github.com/PHPMailer/PHPMailer" target="_blank">PHPMailer</a> '.
-						'framework for PHP');
-			$xml->addVar('Stat', 'v'.PHPMailer::VERSION);
-
-			$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc2076" target="_blank">RFC2076</a> '.
-						  'Common Internet Message Headers');
-			$xml->addVar('Stat', 'Implemented');
-			$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc4021" target="_blank">RFC4021</a> '.
-						  'Registration of Mail and MIME Header flds');
-			$xml->addVar('Stat', 'Implemented');
-			$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc5321" target="_blank">RFC5321</a> '.
-						  'Simple Mail Transfer Protocol');
-			$xml->addVar('Stat', 'Implemented');
-			$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc5322" target="_blank">RFC5322</a> '.
-						  'Internet Message Format');
-			$xml->addVar('Stat', 'Implemented');
-			$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc2060" target="_blank">RFC2060</a> '.
-						  'Internet message access protocol');
-			$xml->addVar('Stat', 'Implemented');
-			$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc3501" target="_blank">RFC3501</a> '.
-						  'Internet message access protocol');
-			$xml->addVar('Stat', 'Implemented');
-		}
+		$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc2076" target="_blank">RFC2076</a> '.
+					  'Common Internet Message Headers');
+		$xml->addVar('Stat', 'Implemented');
+		$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc4021" target="_blank">RFC4021</a> '.
+					  'Registration of Mail and MIME Header flds');
+		$xml->addVar('Stat', 'Implemented');
+		$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc5321" target="_blank">RFC5321</a> '.
+					  'Simple Mail Transfer Protocol');
+		$xml->addVar('Stat', 'Implemented');
+		$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc5322" target="_blank">RFC5322</a> '.
+					  'Internet Message Format');
+		$xml->addVar('Stat', 'Implemented');
+		$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc2060" target="_blank">RFC2060</a> '.
+					  'Internet message access protocol');
+		$xml->addVar('Stat', 'Implemented');
+		$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc3501" target="_blank">RFC3501</a> '.
+					  'Internet message access protocol');
+		$xml->addVar('Stat', 'Implemented');
 	}
 
  	/**

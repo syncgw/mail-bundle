@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	Mail
- *	@copyright	(c) 2008 - 2024 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -599,7 +599,7 @@ class Handler implements DBextHandler {
 
             	if ($gui) {
 
-            		$gui->putMsg('Connecting "'.user.'" to "'.$this->_host.'"', Config::CSS_INFO);
+            		$gui->putMsg('Connecting "'.$user.'" to "'.$this->_host.'"', Config::CSS_INFO);
             		$gui->putMsg($msg, Config::CSS_INFO);
             	} else
 					Log::getInstance()->logMsg(Log::WARN, 20402, $msg);

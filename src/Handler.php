@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	Mail
- *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -82,15 +82,15 @@ class Handler implements DBextHandler {
 
 	// message types
 	const TYPES 		 = [
-			TYPETEXT			=> 'TEXT',
-			TYPEMULTIPART		=> 'MULTIPART',
-			TYPEMESSAGE			=> 'MESSAGE',
-			TYPEAPPLICATION		=> 'APPLICATION',
-			TYPEAUDIO			=> 'AUDIO',
-			TYPEIMAGE			=> 'IMAGE',
-			TYPEVIDEO			=> 'VIDEO',
-			TYPEMODEL			=> 'MODEL',
-			TYPEOTHER			=> 'OHER',
+			\TYPETEXT			=> 'TEXT',
+			\TYPEMULTIPART		=> 'MULTIPART',
+			\TYPEMESSAGE		=> 'MESSAGE',
+			\TYPEAPPLICATION	=> 'APPLICATION',
+			\TYPEAUDIO			=> 'AUDIO',
+			\TYPEIMAGE			=> 'IMAGE',
+			\TYPEVIDEO			=> 'VIDEO',
+			\TYPEMODEL			=> 'MODEL',
+			\TYPEOTHER			=> 'OHER',
 			9					=> 'UNKNOWN',
 	];
 
@@ -2032,7 +2032,7 @@ class Handler implements DBextHandler {
 		$data  = '';
 
 	   	// get data
-		if (!($msg->type == TYPEMULTIPART && $msg->subtype == 'RELATED'))
+		if (!($msg->type == \TYPEMULTIPART && $msg->subtype == 'RELATED'))
 		    $data = $part ? imap_fetchbody($this->_imap, $mid, $part, FT_UID|FT_PEEK) :
 					imap_body($this->_imap, $mid, FT_UID|FT_PEEK);
 
@@ -2045,10 +2045,10 @@ class Handler implements DBextHandler {
 	    // ENC8BIT				- 8bit
 	    // ENCBINARY			- Binary
 	    // ENCBASE64			- Base64
-	    if ($parms['encoding'] == ENCBASE64)
+	    if ($parms['encoding'] == \ENCBASE64)
 	        $data = base64_decode($data);
 	    // ENCQUOTEDPRINTABLE	- Quoted-Printable
-	    elseif ($parms['encoding'] == ENCQUOTEDPRINTABLE)
+	    elseif ($parms['encoding'] == \ENCQUOTEDPRINTABLE)
         	$data = quoted_printable_decode($data);
 	    // ENCOTHER				- Other
 
